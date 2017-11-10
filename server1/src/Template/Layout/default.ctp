@@ -16,7 +16,7 @@
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
-<html>
+<html ng-app="coderDecoder2App">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body ng-controller="MainController as vm">
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
@@ -48,10 +48,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </nav>
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    <!-- <div class="container clearfix">
         <?= $this->fetch('content') ?>
+    </div> -->
+    <div class="container clearfix">
+        
+        <div ui-view class="view"></div>
+        {{1+1}}
     </div>
     <footer>
     </footer>
+    <script type="text/javascript" src="../../../js/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../../js/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="../../../js/app/app.js"></script>
+    <script type="text/javascript" src="../../../js/app/main.controller.js"></script>
+
+
+
 </body>
 </html>
