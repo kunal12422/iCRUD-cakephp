@@ -41,6 +41,7 @@ use Cake\Routing\Route\DashedRoute;
  * `:action` markers.
  *
  */
+Router::extensions(['json']);
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
@@ -49,6 +50,13 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
+    // Router::prefix('api', function ($routes) {
+    //     $routes->extensions(['json', 'xml']);
+        
+    //     $routes->resources('Users');
+    //     $routes->fallbacks('InflectedRoute');
+    // });
+    
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
 
     /**
@@ -73,6 +81,24 @@ Router::scope('/', function (RouteBuilder $routes) {
      * routes you want in your application.
      */
     $routes->fallbacks(DashedRoute::class);
+});
+Router::scope('/api', function ($routes) {
+    $routes->extensions(['json']);
+    // $routes->resources('List');
+    $routes->get('/list', ['controller' => 'List', 'action' => 'index']);
+    $routes->post('/list', ['controller' => 'List', 'action' => 'add']);
+    $routes->get('/list/:id', ['controller' => 'List', 'action' => 'view'])
+    ->setPatterns(['id' => '\d+'])
+    ->setPass(['id']);
+    $routes->put('/list/:id', ['controller' => 'List', 'action' => 'edit'])
+    ->setPatterns(['id' => '\d+'])
+    ->setPass(['id']);
+    $routes->delete('/list/:id', ['controller' => 'List', 'action' => 'delete'])
+    ->setPatterns(['id' => '\d+'])
+    ->setPass(['id']);
+    
+    
+    $routes->fallbacks('InflectedRoute');
 });
 
 /**

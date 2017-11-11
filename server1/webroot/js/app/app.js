@@ -7,9 +7,6 @@ angular.module('coderDecoder2App', [
 
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider','$locationProvider', function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
-    // $httpProvider.interceptors.push('authInterceptor');
-    $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
     $urlRouterProvider
       .otherwise('/');
     $stateProvider
@@ -17,30 +14,23 @@ angular.module('coderDecoder2App', [
  
       .state('home', {
         url: '/',
-        templateUrl: '/js/app/views/home.html',
+        templateUrl: '/js/app/views/list.html',
         controller: 'MainController as vm'
         
-        // ,resolve: {
-        //   fetchTodoList: [ 'DataFactory', function (DataFactory) {
-
-            
-        //      return DataFactory.getAllTasks()
-        //   }]
-        // }
 
       })
-    //   .state('login', {
-    //     url: '/login',
-    //     templateUrl: 'app/views/login.html',
-    //     controller: 'LoginController as vm'
+      .state('addUser', {
+        url: '/add-user',
+        templateUrl: '/js/app/views/add-new.html',
+        controller: 'AddController as vm'
 
-    //   })
-    //   .state('register', {
-    //     url: '/register',
-    //     templateUrl: 'app/views/register.html',
-    //     controller: 'RegisterController as vm'
+      })
+      .state('edit', {
+        url: '/edit/:id',
+        templateUrl: '/js/app/views/edit.html',
+        controller: 'EditController as vm'
 
-    //   })
+      })
 
   }])
 ;

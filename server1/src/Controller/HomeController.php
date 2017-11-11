@@ -1,16 +1,17 @@
 <?php
-   namespace App\Controller;
-   use App\Controller\AppController;
-   use Cake\Network\Exception\BadRequestException;
+    namespace App\Controller;
 
-   class HomeController extends AppController{
+    use App\Controller\AppController;
 
-    public function initialize()
+    class HomeController extends AppController
     {
-        parent::initialize();
-        $this->loadComponent('RequestHandler');
+        public function initialize()
+        {
+            parent::initialize();
+            $this->loadComponent('RequestHandler');
+        }
+    
+        public function index()
+        {
+        }
     }
-      public function index(){
-      }
-   }
-?>
