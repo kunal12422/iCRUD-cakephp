@@ -1,0 +1,1 @@
+A PHP based CRUD pannel using CakePHP functionality for REST API.
